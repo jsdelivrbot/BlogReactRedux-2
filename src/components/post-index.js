@@ -5,15 +5,14 @@ import {fetchPosts} from '../actions'
 import _ from 'lodash'
 
 class PostIndex extends Component {
-
-  componentDidMount(){
+  componentDidMount () {
     this.props.fetchPosts()
   }
 
-  renderPosts() {
-    return _.map(this.props.posts, post =>{
+  renderPosts () {
+    return _.map(this.props.posts, post => {
       const to = `/posts/${post.id}`
-      return(
+      return (
         <li className="list-group-item" key={post.id}>
           <Link to={to}>{post.title}</Link>
         </li>
@@ -22,7 +21,6 @@ class PostIndex extends Component {
   }
 
   render () {
-
     return (
       <div>
         <div className="text-xs-right">
@@ -39,9 +37,9 @@ class PostIndex extends Component {
   }
 }
 
-function mapStateToProps(state){
+function mapStateToProps (state) {
   return {posts: state.posts}
 }
 
-//fetchposts otra manera de hacerlo
-export default connect(mapStateToProps, {fetchPosts}) (PostIndex)
+// fetchposts otra manera de hacerlo
+export default connect(mapStateToProps, {fetchPosts})(PostIndex)
